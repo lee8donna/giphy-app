@@ -36,8 +36,15 @@ class GiphySearch extends React.Component {
   render() {
     //console.log(giphies);
     return (
-      <div>
-        <SearchForm lastQuery={this.state.lastQuery} onSearchTermSubmit={value => this.giphySearch(value)} />
+      <div className="container">
+        <h1>Stupid GIphy Search</h1>
+        <SearchForm
+          lastQuery={this.state.lastQuery}
+          onSearchTermSubmit={value => this.giphySearch(value)}
+        />
+        <div className="alert alert-info">
+          You searched for <b>{this.state.lastQuery}</b>
+        </div>
         <SearchResultList giphies={this.state.giphies} />
       </div>
     );

@@ -14,7 +14,7 @@ class SearchResultList extends Component {
           <div className="card">
             <img
               className="card-img-top"
-              src={giphy.images.preview_gif.url}
+              src={giphy.images.downsized_medium.url}
               alt={giphy.title}
             />
             <div className="card-body">
