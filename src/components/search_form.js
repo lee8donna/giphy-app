@@ -14,7 +14,7 @@ class SearchForm extends Component {
   }
 
   handleSubmit(event) {
-    this.props.onSearchTermChange(this.state.value);
+    this.props.onSearchTermSubmit(this.state.value);
     event.preventDefault();
   }
 
@@ -33,7 +33,7 @@ class SearchForm extends Component {
         <span>
           {" "}
           <div className="alert alert-info">
-            You searched for {this.state.value}
+            You searched for {this.props.lastQuery}
           </div>
         </span>
       </form>
