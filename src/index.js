@@ -28,6 +28,7 @@ class GiphySearch extends React.Component {
       .then(result => {
         console.log(result);
         this.setState({
+          lastQuery: value,
           giphies: result.data
         });
       });
@@ -36,7 +37,7 @@ class GiphySearch extends React.Component {
     //console.log(giphies);
     return (
       <div>
-        <SearchForm onSearchTermChange={value => this.giphySearch(value)} />
+        <SearchForm lastQuery={this.state.lastQuery} onSearchTermSubmit={value => this.giphySearch(value)} />
         <SearchResultList giphies={this.state.giphies} />
       </div>
     );
