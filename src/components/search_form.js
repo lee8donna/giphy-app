@@ -27,11 +27,7 @@ class SearchForm extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <input
-            className="btn btn-primary mb-2"
-            type="submit"
-            value="Submit"
-          />
+          <input className="btn btn-dark mb-2" type="submit" value="Submit" />
         </div>
       </form>
     );

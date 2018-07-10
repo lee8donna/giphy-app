@@ -1,45 +1,73 @@
-import React from "react";
+import React, { Component } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const liStyle = {
+  width: "50%",
   border: "0"
 };
 
-const buttonStyle = {
-  fontSize: "10px"
+const alertStyle = {
+  fontSize: "10px",
+  padding: "5px"
 };
 
-const handleClick = giphy => {
-  console.log(giphy.url);
-};
+class GiphyItem extends Component {
+  state = { isLinkClicked: false, isCopied: false };
 
-const GiphyItem = ({ giphy }) => {
-  return (
-    <li className="list-group-item" style={liStyle} key={giphy.id}>
-      <div className="card">
-        <img
-          className="card-img-top"
-          src={giphy.images.fixed_height.url}
-          alt={giphy.title}
-        />
-        <div className="card-body">
-          <h6 className="card-title">{giphy.title}</h6>
-          <div className="card-text">
-            <small>
+  handleClick = giphy => {
+    console.log("Bookmark as favourite");
+    //this.setState({ isLinkClicked: true });
+    //console.log(this.state.isLinkedClicked);
+  };
+
+  render() {
+    return (
+      <li className="list-group-item" style={liStyle} key={this.props.giphy.id}>
+        <div className="card">
+          <img
+            className="card-img-top"
+            src={this.props.giphy.images.fixed_height.url}
+            alt={this.props.giphy.title}
+          />
+          <div className="card-body">
+            <div className="card-text">
+              {this.state.isCopied ? (
+                <div
+                  className="alert alert-light alert-dismissable fade show"
+                  style={alertStyle}
+                >
+                  Giphy Link Copied. Go Crazy.
+                </div>
+              ) : null}
+              <CopyToClipboard
+                text={this.props.giphy.url}
+                onCopy={() => this.setState({ isCopied: true })}
+              >
+                <a
+                  className="btn btn-secondary btn-sm"
+                  onClick={() => {
+                    this.handleClick(this.props.giphy);
+                  }}
+                >
+                  Copy Gif
+                </a>
+              </CopyToClipboard>
+
               <button
-                className="form-control"
-                style={buttonStyle}
+                className="btn btn-secondary btn-sm"
+                disabled={true}
                 onClick={() => {
-                  handleClick(giphy);
+                  this.handleClick(this.props.giphy);
                 }}
               >
-                {giphy.url}
+                Add To Favourites
               </button>
-            </small>
+            </div>
           </div>
         </div>
-      </div>
-    </li>
-  );
-};
+      </li>
+    );
+  }
+}
 
 export default GiphyItem;

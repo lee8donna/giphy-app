@@ -1,5 +1,4 @@
 import React from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import GiphyItem from "./giphy_item";
 
 const SearchResultList = props => {
@@ -12,7 +11,7 @@ const SearchResultList = props => {
     return <GiphyItem key={giphy.id} giphy={giphy} />;
   });
 
-  return <ul className="list-group">{giphyItems}</ul>;
+  return <div className="card-group">{giphyItems}</div>;
 };
 
 export default SearchResultList;

@@ -38,7 +38,7 @@ class GiphySearch extends React.Component {
           lastQuery={this.state.lastQuery}
           onSearchTermSubmit={value => this.giphySearch(value)}
         />
-        <div className="alert alert-info">
+        <div className="alert alert-secondary">
           You searched for <b>{this.state.lastQuery}</b>
         </div>
         <SearchResultList giphies={this.state.giphies} />
